@@ -111,7 +111,7 @@ new Toast('I am a toast').pop();
             // Close the popper automatically.
             autoBob: boolean = false,
             
-            // How long (ms) before the popper closed.
+            // How long (ms) before the popper closed automatically.
             autoBobDelay: number = 3000,
             
             // Disable the backdrop of the popper.
