@@ -1,5 +1,5 @@
 /**
- * Create a Element.
+ * Create an Element.
  * @param {string} options.tagName
  * @param {string} options.className
  * @param {object} options.attributes
@@ -7,7 +7,7 @@
  * @param {HTMLElement[]} options.children
  * @return {HTMLElement}
  */
-const createNode = ({
+const createElement = ({
     tagName = 'div',
     className,
     attributes = {},
@@ -39,4 +39,4 @@ const createNode = ({
     return element;
 };
 
-export default createNode;
+export default createElement;
