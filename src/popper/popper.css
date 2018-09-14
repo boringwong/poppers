@@ -1,0 +1,66 @@
+:root {
+    --active-highlight: inset 999px 999px rgba(0, 0, 0, 0.1);
+    --focus-highlight: 0 0 0 2px var(--primary-outline-color);
+}
+
+.popper {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.5;
+    pointer-events: none;
+    animation: fade-in var(--animation-duration);
+
+    & *,
+    &:--before-after,
+    & :--before-after {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        outline: none;
+    }
+
+    & button {
+        font-size: inherit;
+        font-family: inherit;
+        border: none;
+        background: none;
+        cursor: pointer;
+        user-select: none;
+
+        &:hover {
+            opacity: 0.9;
+        }
+        &:active {
+            box-shadow: var(--active-highlight);
+        }
+        &:focus {
+            box-shadow: var(--focus-highlight);
+        }
+        &:active:focus {
+            box-shadow: var(--active-highlight), var(--focus-highlight);
+        }
+    }
+
+    & input {
+        font-size: inherit;
+        font-family: inherit;
+        border: none;
+    }
+}
+
+.popper-main {
+    position: relative;
+    font-size: 16px;
+    padding: 1em;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-center);
+    pointer-events: initial;
+    animation: inherit;
+}

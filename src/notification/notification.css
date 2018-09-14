@@ -1,0 +1,29 @@
+.notification {
+    justify-content: flex-end;
+    animation-name: none;
+
+    & .popper-main {
+        align-self: flex-start;
+        width: 300px;
+        margin: var(--edge-space) var(--edge-space) 0 0;
+        box-shadow: var(--box-shadow-bottom);
+        animation-name: slide-left;
+        animation-duration: 0.3s;
+    }
+}
+
+
+
+@media (--mobile) {
+    .notification {
+        justify-content: center;
+
+        & .popper-main {
+            align-self: flex-start;
+            flex: 1;
+            margin-left: var(--edge-space);
+            animation-name: slide-down;
+            animation-duration: var(--animation-duration);
+        }
+    }
+}

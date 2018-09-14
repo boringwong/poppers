@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>poppers examples</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <link rel="stylesheet" href="../dist/poppers.min.css">
+    </head>
+    <body>
+        <button type="button" id="toast-trigger">Toast</button>
+        <button type="button" id="alert-trigger">Alert</button>
+        <button type="button" id="confirm-trigger">Confirm</button>
+        <button type="button" id="prompt-trigger">Prompt</button>
+        <button type="button" id="notification-trigger">Notification</button>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+        <script src="../dist/poppers.min.js"></script>
+        <script>
+            document.addEventListener('click', function (e) {
+                switch (e.target.id) {
+                    case 'toast-trigger': {
+                        new poppers.Toast('I am a toast').pop();
+                        break;
+                    }
+
+                    case 'alert-trigger': {
+                        poppers.alert('I am an alert');
+                        break;
+                    }
+
+                    case 'confirm-trigger': {
+                        poppers.confirm('Are you a confirm?')
+                            .then(function () {
+                                new poppers.Toast('Yes').pop();
+                            })
+                            .catch(function () {
+                                new poppers.Toast('No').pop();
+                            });
+                        break;
+                    }
+
+                    case 'prompt-trigger': {
+                        poppers.prompt('Type your name please:', 'Boring')
+                            .then(function (value) {
+                                new poppers.Toast('Hi, '+ value).pop();
+                            })
+                            .catch(function () {
+                                new poppers.Toast('Canceled').pop();
+                            });
+                        break;
+                    }
+
+                    case 'notification-trigger': {
+                        new poppers.Notification('I am a notification.').pop();
+                        break;
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

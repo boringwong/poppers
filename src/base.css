@@ -1,0 +1,62 @@
+:root {
+    --primary-color: deepskyblue;
+    --primary-outline-color: lightskyblue;
+    --border-radius: 4px;
+    --box-shadow-blur: 8px;
+    --box-shadow-color: color-mod(black alpha(15%));
+    --box-shadow-center: 0 0 var(--box-shadow-blur) var(--box-shadow-color);
+    --box-shadow-bottom: 0 2px var(--box-shadow-blur) var(--box-shadow-color);
+    --animation-duration: 0.2s;
+    --edge-space: 10px;
+}
+
+@custom-selector :--before-after ::before, ::after;
+
+@custom-media --mobile (max-width: 480px);
+
+
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes down {
+    0% {
+        transform: translate(0, -10px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes zoom-out {
+    0% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes slide-left {
+    0% {
+        transform: translate(100%);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+@keyframes slide-down {
+    0% {
+        transform: translate(0, -100%);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}

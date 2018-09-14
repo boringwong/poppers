@@ -1,0 +1,23 @@
+.toast .popper-main {
+    align-self: flex-start;
+    max-width: 40%;
+    text-align: center;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    margin-top: var(--edge-space);
+    box-shadow: var(--box-shadow-bottom);
+    animation-name: down;
+}
+
+
+
+@media (--mobile) {
+    .toast .popper-main {
+        top: auto;
+        align-self: initial;
+        color: white;
+        background: rgba(0, 0, 0, 0.8);
+        box-shadow: none;
+        animation: none;
+    }
+}
