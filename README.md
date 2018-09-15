@@ -4,6 +4,8 @@
 
 Some little things which usually pop up on your pages.
 
+## Table of contents
+
 <!-- MarkdownTOC -->
 
 - [Installation](#installation)
