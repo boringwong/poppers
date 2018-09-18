@@ -4,10 +4,14 @@ import commonjs from 'rollup-plugin-commonjs';
 import babel from 'rollup-plugin-babel';
 import postcss from 'rollup-plugin-postcss';
 import {uglify} from 'rollup-plugin-uglify';
-import license from 'rollup-plugin-license';
 import pkg from './package.json';
 
 const input = './src/index.js';
+const banner = `/*!
+ * Poppers v${pkg.version}
+ * Copyright (c) 2018-present ${pkg.author}
+ * ${pkg.license} license
+ */`;
 const firstPlugins = [
     clear({
         targets: ['dist']
@@ -15,35 +19,26 @@ const firstPlugins = [
     nodeResolve(),
     babel()
 ];
-const lastPlugins = [
-    license({
-        banner:
-`/*!
- * Poppers v<%=pkg.version%>
- * Copyright (c) 2018-present <%=pkg.author%>
- * <%=pkg.license%> license
- */`
-    })
-];
 const configs = [
     {
         input,
         output: [
             {
                 file: pkg.module,
-                format: 'es'
+                format: 'es',
+                banner
             },
             {
                 file: pkg.main,
-                format: 'cjs'
+                format: 'cjs',
+                banner
             }
         ],
         plugins: [
             ...firstPlugins,
             postcss({
                 inject: false
-            }),
-            ...lastPlugins
+            })
         ],
         external: (id) => /^\w/.test(id)
     },
@@ -53,7 +48,8 @@ const configs = [
             file: pkg.browser,
             format: 'umd',
             name: pkg.name,
-            sourcemap: true
+            sourcemap: true,
+            banner
         },
         plugins: [
             ...firstPlugins,
@@ -61,8 +57,11 @@ const configs = [
             postcss({
                 extract: true
             }),
-            uglify(),
-            ...lastPlugins
+            uglify({
+                output: {
+                    comments: /Poppers/
+                }
+            })
         ]
     }
 ];
