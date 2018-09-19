@@ -42,8 +42,8 @@ class Dialog extends Popper {
         return element;
     }
 
-    _createMain() {
-        const element = super._createMain();
+    _createContent() {
+        const element = super._createContent();
         element.appendChild(this._createMessage());
 
         if (this._type === 'prompt') {

@@ -49,17 +49,26 @@ class Popper {
     }
 
     _createMain() {
-        const contentProperties = {};
+        return createElement({
+            className: this.constructor.MAIN_CLASS,
+            children: [
+                this._createContent()
+            ]
+        });
+    }
+
+    _createContent() {
+        const options = {};
 
         if (this._options.content) {
             const content = this._options.content;
 
             if (content instanceof Node) {
-                Object.assign(contentProperties, {
+                Object.assign(options, {
                     children: [content]
                 });
             } else {
-                Object.assign(contentProperties, {
+                Object.assign(options, {
                     properties: {
                         textContent: content.toString()
                     }
@@ -68,9 +77,9 @@ class Popper {
         }
 
         return createElement({
-            className: this.constructor.MAIN_CLASS,
-            ...contentProperties
-        });
+            className: this.constructor.CONTENT_CLASS,
+            ...options
+        })
     }
 
     _attach() {
@@ -101,6 +110,7 @@ class Popper {
     static CLASS = 'popper';
     static POPPED_CLASS = 'popped';
     static MAIN_CLASS = 'popper-main';
+    static CONTENT_CLASS = 'popper-content';
 }
 
 export default Popper;
