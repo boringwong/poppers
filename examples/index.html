@@ -12,6 +12,7 @@
         <button type="button" id="confirm-trigger">Confirm</button>
         <button type="button" id="prompt-trigger">Prompt</button>
         <button type="button" id="notification-trigger">Notification</button>
+        <button type="button" id="dropdown-trigger">Dropdown</button>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -79,6 +80,26 @@
                     }
                 }
             });
+
+            new poppers.Dropdown(
+                [
+                    {
+                        text: 'Reload',
+
+                        handler: () => {
+                            location.reload();
+                        }
+                    },
+                    {
+                        text: 'Go to repo',
+
+                        handler: () => {
+                            location.href = 'https://github.com/boringwong/poppers';
+                        }
+                    },
+                ],
+                document.getElementById('dropdown-trigger')
+            );
         </script>
     </body>
 </html>

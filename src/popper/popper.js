@@ -8,6 +8,10 @@ class Popper {
         if (!this._element) {
             this._element = this._createElement();
         }
+
+        if (this._options.target) {
+            this._initTarget();
+        }
     }
 
     pop() {
@@ -82,8 +86,36 @@ class Popper {
         })
     }
 
+    _initTarget() {
+        const targetOption = this._options.target;
+        let target;
+
+        if (targetOption instanceof HTMLElement) {
+            target = targetOption;
+        } else if (typeof targetOption === 'string') {
+            target = document.querySelector(targetOption);
+
+            if (!target) {
+                throw new Error(`Cannot get an element with selector \`${targetOption}\`.`);
+            }
+        } else {
+            throw new Error(`\`options.target\` must be \`HTMLElement\` or \`string\`, but got \`${targetOption}\`.`);
+        }
+
+        this._target = target;
+        this._listenTarget();
+    }
+
     _attach() {
-        document.body.appendChild(this._element);
+        let parent = document.body;
+
+        if (this._target) {
+            parent = this._target.offsetParent;
+            this._element.classList.add(this.constructor.POPS_WITH_TARGET_CLASS);
+            this._setPosition();
+        }
+
+        parent.appendChild(this._element);
     }
 
     _detach() {
@@ -96,8 +128,28 @@ class Popper {
         }
     }
 
+    _setPosition() {
+        const {
+            left,
+            top
+        } = this._calcPosition();
+        this._element.style.cssText += `;
+            left: ${left}px;
+            top: ${top}px;
+        `;
+    }
+
+    _calcPosition() {
+        const target = this._target;
+        return {
+            left: target.offsetLeft,
+            top: target.offsetTop + target.offsetHeight
+        };
+    }
+
     _options;
     _element;
+    _target;
 
     static _defaultOptions = {
         autoBob: false,
@@ -106,11 +158,13 @@ class Popper {
         backdropTransparent: false,
         clicksBackdropToBob: true,
         content: undefined,
+        target: undefined,
     };
     static CLASS = 'popper';
     static POPPED_CLASS = 'popped';
     static MAIN_CLASS = 'popper-main';
     static CONTENT_CLASS = 'popper-content';
+    static POPS_WITH_TARGET_CLASS = 'popper-pops-with-target';
 }
 
 export default Popper;

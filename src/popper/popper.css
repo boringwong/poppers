@@ -47,6 +47,10 @@
         }
     }
 
+    & ul {
+        list-style: none;
+    }
+
     & input {
         font-size: inherit;
         font-family: inherit;
@@ -63,4 +67,14 @@
     box-shadow: var(--box-shadow-center);
     pointer-events: initial;
     animation: inherit;
+}
+
+.popper-pops-with-target {
+    position: absolute;
+    right: auto;
+    bottom: auto;
+
+    & .popper-backdrop {
+        position: fixed;
+    }
 }

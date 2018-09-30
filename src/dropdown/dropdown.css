@@ -1,0 +1,22 @@
+.dropdown {
+    & .popper-main {
+        padding: 0;
+        margin-top: var(--border-radius);
+        box-shadow: var(--box-shadow-bottom);
+        animation-name: down;
+    }
+}
+
+.dropdown-menu {
+    font-size: 14px;
+    padding: var(--border-radius) 0;
+    user-select: none;
+}
+.dropdown-menu-item {
+    padding: 0.25em 1em;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: var(--active-highlight);
+    }
+}

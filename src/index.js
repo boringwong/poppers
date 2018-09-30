@@ -6,6 +6,7 @@ import {
     prompt
 } from './dialog';
 import Notification from './notification';
+import Dropdown from './dropdown';
 import './index.css';
 
 export {
@@ -13,5 +14,6 @@ export {
     alert,
     confirm,
     prompt,
-    Notification
+    Notification,
+    Dropdown
 };
