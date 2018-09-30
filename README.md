@@ -12,7 +12,6 @@ Some little things which usually pop up on your pages.
 - [Basic usage](#basic-usage)
 - [API](#api)
 - [Some common stuff](#some-common-stuff)
-- [Todo](#todo)
 
 <!-- /MarkdownTOC -->
 
@@ -145,8 +144,3 @@ new Toast('I am a toast').pop();
 -   `bob()`
 
     Close the popper (upside down "pop" 🙃).
-
-## Todo
-
-- [ ] `Tooltip`
-- [ ] `Modal`
