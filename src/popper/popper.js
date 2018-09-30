@@ -4,13 +4,13 @@ import createElement from '../utils/create-element';
 class Popper {
     constructor(options) {
         this._options = Object.assign({}, Popper._defaultOptions, this.constructor._defaultOptions, options);
-    }
 
-    pop() {
         if (!this._element) {
             this._element = this._createElement();
         }
+    }
 
+    pop() {
         this._attach();
 
         if (this._options.autoBob) {

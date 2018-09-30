@@ -3,16 +3,17 @@ import createElement from '../utils/create-element';
 import i18n from '../i18n';
 
 class Dialog extends Popper {
-    constructor(type, message, defaultValue = '') {
-        super();
+    constructor(type, message, defaultValue) {
+        super({
+            content: message,
+            type,
+            defaultValue
+        });
 
         this._handleKeydownOnBody = ::this._handleKeydownOnBody;
 
-        this._type = type;
-        this._message = message;
-
-        if (this._type === 'prompt') {
-            this._value = this._defaultValue = defaultValue;
+        if (this._options.type === 'prompt') {
+            this._value = this._options.defaultValue;
         }
     }
 
@@ -21,7 +22,7 @@ class Dialog extends Popper {
         this._focus();
         document.body.addEventListener('keydown', this._handleKeydownOnBody);
 
-        if (this._type === 'alert') {
+        if (this._options.type === 'alert') {
             return;
         }
 
@@ -38,37 +39,26 @@ class Dialog extends Popper {
 
     _createElement() {
         const element = super._createElement();
-        element.classList.add(this._type);
+        element.classList.add(this._options.type);
         return element;
     }
 
-    _createContent() {
-        const element = super._createContent();
-        element.appendChild(this._createMessage());
+    _createMain() {
+        const element = super._createMain();
 
-        if (this._type === 'prompt') {
+        if (this._options.type === 'prompt') {
             element.appendChild(this._createInput());
         }
 
         element.appendChild(this._createActions());
-        element.addEventListener('click', ::this._handleClick);
         return element;
-    }
-
-    _createMessage() {
-        return createElement({
-            className: this.constructor.MESSAGE_CLASS,
-            properties: {
-                textContent: this._message
-            }
-        });
     }
 
     _createInput() {
         const element = createElement({
             tagName: 'input',
             attributes: {
-                value: this._defaultValue
+                value: this._options.defaultValue
             },
             className: this.constructor.INPUT_CLASS
         });
@@ -80,14 +70,16 @@ class Dialog extends Popper {
     _createActions() {
         const children = [this._createConfirmingTrigger()];
 
-        if (this._type === 'confirm' || this._type === 'prompt') {
+        if (this._options.type === 'confirm' || this._options.type === 'prompt') {
             children.push(this._createCancelingTrigger());
         }
 
-        return createElement({
+        const element = createElement({
             className: this.constructor.ACTIONS_CLASS,
             children
         });
+        element.addEventListener('click', ::this._handleActionsClick);
+        return element;
     }
 
     _createConfirmingTrigger() {
@@ -122,7 +114,7 @@ class Dialog extends Popper {
         });
     }
 
-    _handleClick(e) {
+    _handleActionsClick(e) {
         const {target} = e;
 
         if (target.classList.contains(this.constructor.CONFIRMING_CLASS)) {
@@ -155,7 +147,7 @@ class Dialog extends Popper {
     }
 
     _confirm() {
-        switch (this._type) {
+        switch (this._options.type) {
             case 'confirm': {
                 this._resolve();
                 break;
@@ -171,7 +163,7 @@ class Dialog extends Popper {
     }
 
     _cancel() {
-        switch (this._type) {
+        switch (this._options.type) {
             case 'confirm':
             case 'prompt': {
                 this._reject();
@@ -184,20 +176,19 @@ class Dialog extends Popper {
 
     _focus() {
         const element = this._element.querySelector(
-            this._type === 'prompt' ? `.${this.constructor.INPUT_CLASS}` : `.${this.constructor.CONFIRMING_CLASS}`
+            this._options.type === 'prompt' ? `.${this.constructor.INPUT_CLASS}` : `.${this.constructor.CONFIRMING_CLASS}`
         );
         element.focus();
     }
 
-    _type;
-    _message;
-    _defaultValue;
     _value = '';
     _resolve;
     _reject;
 
     static _defaultOptions = {
-        clicksBackdropToBob: false
+        clicksBackdropToBob: false,
+        type: undefined,
+        defaultValue: ''
     };
 
     static CLASS = 'dialog';
