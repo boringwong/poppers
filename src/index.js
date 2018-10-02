@@ -1,12 +1,12 @@
 import 'dom4';
-import Toast from './toast';
+import Toast from './components/toast';
 import {
     alert,
     confirm,
     prompt
-} from './dialog';
-import Notification from './notification';
-import Dropdown from './dropdown';
+} from './components/dialog';
+import Notification from './components/notification';
+import Dropdown from './components/dropdown';
 import './index.css';
 
 export {

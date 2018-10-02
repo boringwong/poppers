@@ -1,6 +1,6 @@
-import Popper from '../popper';
-import createElement from '../utils/create-element';
-import i18n from '../i18n';
+import Popper from '../../core/popper';
+import createElement from '../../utils/create-element';
+import i18n from '../../i18n';
 
 class Dialog extends Popper {
     constructor(type, message, defaultValue) {

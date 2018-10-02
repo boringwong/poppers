@@ -1,6 +1,6 @@
-import Popper from '../popper';
+import Popper from '../../core/popper';
 
-class Toast extends Popper {
+class Notification extends Popper {
     constructor(message, options) {
         super(Object.assign({}, {
             content: message
@@ -12,7 +12,7 @@ class Toast extends Popper {
         autoBob: true
     };
 
-    static _CLASS = 'toast';
+    static _CLASS = 'notification';
 }
 
-export default Toast;
+export default Notification;

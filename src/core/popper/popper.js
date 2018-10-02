@@ -1,5 +1,5 @@
 import Backdrop from '../backdrop';
-import createElement from '../utils/create-element';
+import createElement from '../../utils/create-element';
 
 class Popper {
     constructor(options) {

@@ -1,4 +1,4 @@
-import createElement from '../utils/create-element';
+import createElement from '../../utils/create-element';
 
 class Backdrop {
     constructor(options) {

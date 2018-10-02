@@ -1,5 +1,5 @@
-import Popper from '../popper';
-import createElement from '../utils/create-element';
+import Popper from '../../core/popper';
+import createElement from '../../utils/create-element';
 
 class Dropdown extends Popper {
     constructor(menu, target, options) {

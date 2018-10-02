@@ -1,7 +1,7 @@
 @import "./base.css";
-@import "./popper/popper.css";
-@import "./backdrop/backdrop.css";
-@import "./toast/toast.css";
-@import "./dialog/dialog.css";
-@import "./notification/notification.css";
-@import "./dropdown/dropdown.css";
+@import "./core/popper/popper.css";
+@import "./core/backdrop/backdrop.css";
+@import "./components/toast/toast.css";
+@import "./components/dialog/dialog.css";
+@import "./components/notification/notification.css";
+@import "./components/dropdown/dropdown.css";
