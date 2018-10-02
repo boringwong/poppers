@@ -12,7 +12,7 @@ class Toast extends Popper {
         autoBob: true
     };
 
-    static CLASS = 'toast';
+    static _CLASS = 'toast';
 }
 
 export default Toast;

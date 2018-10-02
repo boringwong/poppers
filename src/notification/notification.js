@@ -12,7 +12,7 @@ class Notification extends Popper {
         autoBob: true
     };
 
-    static CLASS = 'notification';
+    static _CLASS = 'notification';
 }
 
 export default Notification;

@@ -60,7 +60,7 @@ class Dialog extends Popper {
             attributes: {
                 value: this._options.defaultValue
             },
-            className: this.constructor.INPUT_CLASS
+            className: this.constructor._INPUT_CLASS
         });
         element.addEventListener('input', ::this._handleInput);
         element.addEventListener('keypress', ::this._handleKeypressOnInput);
@@ -75,7 +75,7 @@ class Dialog extends Popper {
         }
 
         const element = createElement({
-            className: this.constructor.ACTIONS_CLASS,
+            className: this.constructor._ACTIONS_CLASS,
             children
         });
         element.addEventListener('click', ::this._handleActionsClick);
@@ -89,11 +89,11 @@ class Dialog extends Popper {
                 type: 'button'
             },
             properties: {
-                textContent: this.constructor.CONFIRMING_TEXT
+                textContent: this.constructor._CONFIRMING_TEXT
             },
             className: [
-                this.constructor.ACTION_CLASS,
-                this.constructor.CONFIRMING_CLASS
+                this.constructor._ACTION_CLASS,
+                this.constructor._CONFIRMING_CLASS
             ],
         });
     }
@@ -105,11 +105,11 @@ class Dialog extends Popper {
                 type: 'button'
             },
             properties: {
-                textContent: this.constructor.CANCELING_TEXT
+                textContent: this.constructor._CANCELING_TEXT
             },
             className: [
-                this.constructor.ACTION_CLASS,
-                this.constructor.CANCELING_CLASS
+                this.constructor._ACTION_CLASS,
+                this.constructor._CANCELING_CLASS
             ],
         });
     }
@@ -117,12 +117,12 @@ class Dialog extends Popper {
     _handleActionsClick(e) {
         const {target} = e;
 
-        if (target.classList.contains(this.constructor.CONFIRMING_CLASS)) {
+        if (target.classList.contains(this.constructor._CONFIRMING_CLASS)) {
             this._confirm();
             return;
         }
 
-        if (target.classList.contains(this.constructor.CANCELING_CLASS)) {
+        if (target.classList.contains(this.constructor._CANCELING_CLASS)) {
             this._cancel();
             return;
         }
@@ -176,7 +176,7 @@ class Dialog extends Popper {
 
     _focus() {
         const element = this._element.querySelector(
-            this._options.type === 'prompt' ? `.${this.constructor.INPUT_CLASS}` : `.${this.constructor.CONFIRMING_CLASS}`
+            this._options.type === 'prompt' ? `.${this.constructor._INPUT_CLASS}` : `.${this.constructor._CONFIRMING_CLASS}`
         );
         element.focus();
     }
@@ -191,15 +191,15 @@ class Dialog extends Popper {
         defaultValue: ''
     };
 
-    static CLASS = 'dialog';
-    static MESSAGE_CLASS = 'dialog-message';
-    static INPUT_CLASS = 'dialog-input';
-    static ACTIONS_CLASS = 'dialog-actions';
-    static ACTION_CLASS = 'dialog-action';
-    static CONFIRMING_CLASS = 'dialog-action-confirm';
-    static CANCELING_CLASS = 'dialog-action-cancel';
-    static CONFIRMING_TEXT = i18n.OK;
-    static CANCELING_TEXT = i18n.CANCEL;
+    static _CLASS = 'dialog';
+    static _MESSAGE_CLASS = 'dialog-message';
+    static _INPUT_CLASS = 'dialog-input';
+    static _ACTIONS_CLASS = 'dialog-actions';
+    static _ACTION_CLASS = 'dialog-action';
+    static _CONFIRMING_CLASS = 'dialog-action-confirm';
+    static _CANCELING_CLASS = 'dialog-action-cancel';
+    static _CONFIRMING_TEXT = i18n.OK;
+    static _CANCELING_TEXT = i18n.CANCEL;
 }
 
 const alert = (...args) => {

@@ -12,7 +12,7 @@ class Dropdown extends Popper {
     _createContent() {
         return createElement({
             tagName: 'ul',
-            className: this.constructor.MENU_CLASS,
+            className: this.constructor._MENU_CLASS,
             children: this._options.menu.map(::this._createMenuItem)
         });
     }
@@ -23,7 +23,7 @@ class Dropdown extends Popper {
             properties: {
                 textContent: options.text
             },
-            className: this.constructor.MENU_ITEM_CLASS
+            className: this.constructor._MENU_ITEM_CLASS
         });
 
         element.addEventListener('click', () => {
@@ -43,9 +43,9 @@ class Dropdown extends Popper {
         menu: []
     };
 
-    static CLASS = 'dropdown';
-    static MENU_CLASS = 'dropdown-menu';
-    static MENU_ITEM_CLASS = 'dropdown-menu-item';
+    static _CLASS = 'dropdown';
+    static _MENU_CLASS = 'dropdown-menu';
+    static _MENU_ITEM_CLASS = 'dropdown-menu-item';
 }
 
 export default Dropdown;

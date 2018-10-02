@@ -29,8 +29,8 @@ class Popper {
     _createElement() {
         const element = createElement({
             className: [
-                Popper.CLASS,
-                this.constructor.CLASS
+                Popper._CLASS,
+                this.constructor._CLASS
             ],
             children: [
                 this._createMain()
@@ -54,7 +54,7 @@ class Popper {
 
     _createMain() {
         return createElement({
-            className: this.constructor.MAIN_CLASS,
+            className: this.constructor._MAIN_CLASS,
             children: [
                 this._createContent()
             ]
@@ -81,7 +81,7 @@ class Popper {
         }
 
         return createElement({
-            className: this.constructor.CONTENT_CLASS,
+            className: this.constructor._CONTENT_CLASS,
             ...options
         })
     }
@@ -111,7 +111,7 @@ class Popper {
 
         if (this._target) {
             parent = this._target.offsetParent;
-            this._element.classList.add(this.constructor.POPS_WITH_TARGET_CLASS);
+            this._element.classList.add(this.constructor._POPS_WITH_TARGET_CLASS);
             this._setPosition();
         }
 
@@ -160,11 +160,11 @@ class Popper {
         content: undefined,
         target: undefined,
     };
-    static CLASS = 'popper';
-    static POPPED_CLASS = 'popped';
-    static MAIN_CLASS = 'popper-main';
-    static CONTENT_CLASS = 'popper-content';
-    static POPS_WITH_TARGET_CLASS = 'popper-pops-with-target';
+    static _CLASS = 'popper';
+    static _POPPED_CLASS = 'popped';
+    static _MAIN_CLASS = 'popper-main';
+    static _CONTENT_CLASS = 'popper-content';
+    static _POPS_WITH_TARGET_CLASS = 'popper-pops-with-target';
 }
 
 export default Popper;

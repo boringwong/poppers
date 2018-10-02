@@ -11,10 +11,10 @@ class Backdrop {
     }
 
     _createElement() {
-        const className = [this.constructor.CLASS];
+        const className = [this.constructor._CLASS];
 
         if (this._options.transparent) {
-            className.push(this.constructor.TRANSPARENT_CLASS);
+            className.push(this.constructor._TRANSPARENT_CLASS);
         }
 
         const element = createElement({
@@ -30,8 +30,8 @@ class Backdrop {
         transparent: false,
         onClick: () => undefined
     };
-    static CLASS = 'popper-backdrop';
-    static TRANSPARENT_CLASS = 'popper-backdrop-transparent';
+    static _CLASS = 'popper-backdrop';
+    static _TRANSPARENT_CLASS = 'popper-backdrop-transparent';
 }
 
 export default Backdrop;
