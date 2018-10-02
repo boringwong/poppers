@@ -12,6 +12,7 @@ Some little things which usually pop up on your pages.
 - [Basic usage](#basic-usage)
 - [API](#api)
 - [Some common stuff](#some-common-stuff)
+- [Change log](#change-log)
 
 <!-- /MarkdownTOC -->
 
@@ -182,3 +183,7 @@ new Toast('I am a toast').pop();
 - `bob()`
 
   Close the popper (upside down "pop" 🙃).
+
+## Change log
+
+See [`CHANGELOG.md`](./CHANGELOG.md).
