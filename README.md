@@ -49,136 +49,136 @@ new Toast('I am a toast').pop();
 
 > Some common stuff without description are explained in the next section.
 
--   **`Dropdown`**
+- **`Dropdown`**
 
-    -   `constructor(menu: MenuItem[], target: HTMLElement | string, options = dropdownOptions)`
+  - `constructor(menu: MenuItem[], target: HTMLElement | string, options = dropdownOptions)`
 
-        -   `menu`
+    - `menu`
 
-            -   `MenuItem`
+      - `MenuItem`
 
-                ```ts
-                {
-                    // Triggered when the item clicked.
-                    handler: () => void,
+        ```ts
+        {
+            // Triggered when the item clicked.
+            handler: () => void,
 
-                    // Text of the item.
-                    text: string
-                }
-                ```
+            // Text of the item.
+            text: string
+        }
+            ```
 
-        -   `target`
+    - `target`
 
-            Element which can be clicked to pop.
+      Element which can be clicked to pop.
 
-            Should be a CSS selector when the value is `string`.
+      Should be a CSS selector when the value is `string`.
 
-        -   `options`
+    - `options`
 
-            -   `dropdownOptions`
+      - `dropdownOptions`
 
-                ```js
-                {
-                    backdropTransparent: true
-                }
-                ```
+        ```js
+        {
+            backdropTransparent: true
+        }
+        ```
 
-    -   `pop()`
+  - `pop()`
 
-    -   `bob()`
+  - `bob()`
 
--   **`Notification`**
+- **`Notification`**
 
-    -   `constructor(message: string, options = notificationOptions)`
+  - `constructor(message: string, options = notificationOptions)`
 
-        -   `options`
+    - `options`
 
-            -   `notificationOptions`
+      - `notificationOptions`
 
-                ```js
-                {
-                    backdropDisabled: true,
-                    autoBob: true
-                }
-                ```
+        ```js
+        {
+            backdropDisabled: true,
+            autoBob: true
+        }
+        ```
 
-    -   `pop()`
+  - `pop()`
 
-    -   `bob()`
+  - `bob()`
 
--   **`Toast`**
+- **`Toast`**
 
-    -   `constructor(message: string, options = toastOptions)`
+  - `constructor(message: string, options = toastOptions)`
 
-        -   `options`
+    - `options`
 
-            -   `toastOptions`
+      - `toastOptions`
 
-                ```js
-                {
-                    backdropDisabled: true,
-                    autoBob: true
-                }
-                ```
+        ```js
+        {
+            backdropDisabled: true,
+            autoBob: true
+        }
+        ```
 
-    -   `pop()`
+  - `pop()`
 
-    -   `bob()`
+  - `bob()`
 
--   **`alert(message: string)`**
+- **`alert(message: string)`**
 
--   **`confirm(message: string): Promise`**
+- **`confirm(message: string): Promise`**
 
-    Resolves when "OK" clicked and rejects when "Cancel" clicked.
+  Resolves when "OK" clicked and rejects when "Cancel" clicked.
 
--   **`prompt(message: string, defaultValue: string = ''): Promise`**
+- **`prompt(message: string, defaultValue: string = ''): Promise`**
 
-    Resolves with the input value when "OK" clicked and rejects when "Cancel" clicked.
+  Resolves with the input value when "OK" clicked and rejects when "Cancel" clicked.
 
 ## Some common stuff
 
 ### Arguments
 
--   `options: Options`
+- `options: Options`
 
-    Base options, merged with options that passed as an argument actually.
+  Base options, merged with options that passed as an argument actually.
 
-    -   `Options`
+  - `Options`
 
-        ```js
-        {
-            // Close the popper automatically.
-            autoBob: boolean = false,
+    ```js
+    {
+        // Close the popper automatically.
+        autoBob: boolean = false,
 
-            // How long (ms) before the popper closed automatically.
-            autoBobDelay: number = 3000,
+        // How long (ms) before the popper closed automatically.
+        autoBobDelay: number = 3000,
 
-            // Disable the backdrop of the popper.
-            backdropDisabled: boolean = false,
+        // Disable the backdrop of the popper.
+        backdropDisabled: boolean = false,
 
-            // The backdrop is transparent.
-            backdropTransparent: boolean = false,
+        // The backdrop is transparent.
+        backdropTransparent: boolean = false,
 
-            // The popper can be closed by clicking the backdrop.
-            clicksBackdropToBob: boolean = true,
+        // The popper can be closed by clicking the backdrop.
+        clicksBackdropToBob: boolean = true,
 
-            // Main content of the popper.
-            // Ignored if it is a falsy value.
-            // Converted to `string` if it is not a `Node`.
-            content: string | Node,
-        }
-        ```
+        // Main content of the popper.
+        // Ignored if it is a falsy value.
+        // Converted to `string` if it is not a `Node`.
+        content: string | Node,
+    }
+    ```
 
--   `message: string`
+- `message: string`
 
-    Pure text content. Could be overrode by `options.content`.
+  Pure text content. Could be overrode by `options.content`.
 
 ### Methods
 
--   `pop()`
+- `pop()`
 
-    Open the popper.
+  Open the popper.
 
--   `bob()`
+- `bob()`
 
-    Close the popper (upside down "pop" 🙃).
+  Close the popper (upside down "pop" 🙃).
