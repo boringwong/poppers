@@ -66,7 +66,7 @@ new Toast('I am a toast').pop();
             // Text of the item.
             text: string
         }
-            ```
+        ```
 
     - `target`
 
