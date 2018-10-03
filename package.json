@@ -26,7 +26,8 @@
     "alert",
     "confirm",
     "prompt",
-    "notification"
+    "notification",
+    "dropdown"
   ],
   "author": "Boring <boring@boring.wang> (https://boring.wang/)",
   "license": "MIT",
